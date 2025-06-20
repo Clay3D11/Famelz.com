@@ -132,6 +132,48 @@
     /* height: 100%; */
     
   }
+
+
+  body {
+      background-image: url('./assets/img/Fatmelz.png'); /* your image path */
+
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      /* -webkit-box-reflect:(right); */
+ 
+    }
+    .contact {
+      background-image: url('./assets/img/Fatmelz2.png'); /* your image path */
+
+      background-attachment: fixed;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      /* -webkit-box-reflect:(right); */
+ 
+    }
+    .aboutme {
+      background-image: url('./assets/img/Fatmelz2.png'); /* your image path */
+
+      background-attachment: fixed;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      /* -webkit-box-reflect:(right); */
+ 
+    }
+
+
+
+
+
+
+
  
 }
 
