@@ -161,26 +161,7 @@
 
 
     
-    .aboutme {
-      background-image: url('./assets/img/Fatmelz2.png'); /* your image path */
-
-      background-attachment: fixed;
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-
-      /* -webkit-box-reflect:(right); */
- 
-    }
-
-
-    .contact::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: url('./assets/img/Fatmelz2.png') center/cover no-repeat;
-      z-index: -2;
-    }
+  
 
 
 
@@ -249,6 +230,62 @@
 
 
 
+    
+
+
+    body {
+  background-image: url('./assets/img/Fatmelz.png');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Sections */
+.contact,
+.aboutme {
+  background-image: url('./assets/img/Fatmelz2.png');
+  background-attachment: fixed;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Fallback for small/mobile devices */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll; /* Fallback */
+    background-size: cover;
+    background-position: center;
+  }
+
+  .contact,
+  .aboutme {
+    background-attachment: scroll;
+    background-size: contain;
+    background-position: center;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
 
     /* .contact::before {
       content: '';
@@ -258,6 +295,14 @@
       z-index: -2;
     } */
     
+
+
+
+
+
+
+
+
 
 
     
