@@ -145,17 +145,22 @@
       /* -webkit-box-reflect:(right); */
  
     }
-    .contact {
-      background-image: url('./assets/img/Fatmelz2.png'); /* your image path */
+    
+    
+    /* .contact {
+      background-image: url('./assets/img/Fatmelz2.png');
 
       background-attachment: fixed;
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
 
-      /* -webkit-box-reflect:(right); */
+      -webkit-box-reflect:(right);
  
-    }
+    } */
+
+
+    
     .aboutme {
       background-image: url('./assets/img/Fatmelz2.png'); /* your image path */
 
