@@ -1,0 +1,251 @@
+ /* About ME & Album Section */
+ /* About ME & Album Section */
+ /* About ME & Album Section */
+ /* About ME & Album Section */
+    
+    
+    
+    
+    
+    /* @import url(//fonts.googleapis.com/css?family=Vibur); */
+    
+    
+    .aboutme{
+      height:100%;
+    }
+    /* .aboutme {
+      background: #112 url(//images.weserv.nl/?url=i.imgur.com/6QJjYMe.jpg)  center no-repeat;
+      background-size:cover;
+      margin:0
+    } */
+    .logo {
+      text-align: center;
+      /* width: 65%; */
+      /* height: 250px; */
+      margin: auto;
+      /* position: absolute; */
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+       user-select: none;
+    }
+    
+    .logo b{
+      font: 400 10vh "Vibur";
+      color: #fee;
+      text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #4457ff, 0 0 0.5em #4457ff, 0 0 0.1em #4744ff, 0 10px 3px #000;
+    }
+    .logo b span{
+      animation: blink linear infinite 2s;
+    }
+    .logo b span:nth-of-type(2){
+      animation: blink linear infinite 3s;
+    }
+    @keyframes blink {
+      78% {
+        color: inherit;
+        text-shadow: inherit;
+      }
+      79%{
+         color: #333;
+      }
+      80% {
+        
+        text-shadow: none;
+      }
+      81% {
+        color: inherit;
+        text-shadow: inherit;
+      }
+      82% {
+        color: #333;
+        text-shadow: none;
+      }
+      83% {
+        color: inherit;
+        text-shadow: inherit;
+      }
+      92% {
+        color: #333;
+        text-shadow: none;
+      }
+      92.5% {
+        color: inherit;
+        text-shadow: inherit;
+      }
+    }
+    
+    
+    /* follow me @nodws */
+    #btn-twtr{
+      clear:both;
+      color:#fff;
+      border:2px solid;
+      border-radius:3px;
+      text-align:center;
+      text-decoration:none;
+      display:block;
+      font-family:sans-serif;
+      font-size:14px;
+      width:13em;
+      padding:5px 10px;
+      font-weight:600;
+      position:absolute;
+      bottom:20px;
+      left:0;
+      right:0;
+      margin:0 auto;
+      background:rgba(0,0,0,0.2);
+      box-shadow:0 0 0px 3px rgba(0,0,0,0.2);
+      opacity:0.4
+    }#btn-twtr:hover{color:#fff;opacity:1}
+    
+
+    
+    
+    
+
+
+
+
+
+
+    .aboutmesummery {
+    
+      padding: 0 9rem;
+      font-weight: 600;
+    
+    }
+    
+    
+    
+    
+    /* Albums settings & BAcground */
+    /* Albums settings & BAcground */
+    /* Albums settings & BAcground */
+    /* Albums settings & BAcground */
+    
+    
+    .album-section {
+     padding: 4rem 2rem;
+     background-color: rgba(255, 255, 255, 0.05);
+     text-align: center;
+   }  
+
+   .album-section h3 {
+     font-size: 2rem;
+     margin-bottom: 2rem;
+   } 
+   
+   
+    .albums {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }  
+    .albums h4 {
+      color: #ff0000;
+    }  
+    
+    .album1{
+      margin: 0 5rem;
+
+      background-color: #1b2a38;
+      /* background-image: url(../assets/img/clinclingif-ezgif.com.gif); */
+      background-size: cover;
+  
+      padding: .5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    /* .youtubevids:nth-child(1) {
+      background-image: url(../assets/img/UnFlowZaza.gif);
+      background-size: cover;
+      background-position: center;
+
+    }  
+    
+    
+    
+    .youtubevids:nth-child(2) {
+      background-image: url(../assets/img/clinclingif-ezgif.com.gif);
+      background-size: cover;
+      background-position: center;
+      
+    }  
+    .youtubevids:nth-child(3) {
+      background-image: url(../assets/img/Quefue.gif);
+      background-size: cover;
+      background-position: center;
+      
+    }   */
+    
+    
+     
+    
+    
+    /* Albums BAcground */
+    /* Albums BAcground */
+    /* Albums BAcground */
+    .album1:nth-child(1) {
+      background-image: url(../assets/img/Fatmelz.png);
+      background-size: cover;
+      background-position: center;
+
+    }  
+    .album1:nth-child(2) {
+      background-image: url(../assets/img/quefue.png);
+      background-size: cover;
+      background-position: center;
+
+    }  
+    .album1:nth-child(3) {
+      background-image: url(../assets/img/Fatmelz6.png);
+      background-size: contain;
+      background-position: center;
+
+    }  
+  
+
+    .youtubevids:hover {
+      transform: translateY(-5px);
+    }  
+    
+    
+    .album1:hover {
+      transform: translateY(-5px);
+    }  
+
+    .album h4 {
+      margin-bottom: 0.5rem;
+    }  
+
+    .album p {
+      font-size: 0.9rem;
+      color: #ccc;
+    } 
+
+
+
+
+
+    /* Mobile device */
+    /* Mobile device */
+    /* Mobile device */
+    
+    @media (max-width: 600px) {
+      .aboutmesummery {
+        padding: 0 2rem;
+      }
+      .albums p {
+        font-size: 15px;
+      }
+    }
+    
+    .albums p {
+      color: #ff0b0b;
+    }
+    
