@@ -227,12 +227,20 @@
 
 
     body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: url('./assets/img/Fatmelz.png') center/cover no-repeat;
-  z-index: -1;
-}
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url('./assets/img/Fatmelz.png') center/cover no-repeat;
+      z-index: -1;
+    }
+    .contact::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url('./assets/img/Fatmelz2.png') center/cover no-repeat;
+      z-index: -2;
+    }
+    
 
 
     
