@@ -169,6 +169,14 @@
     }
 
 
+    .contact::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url('./assets/img/Fatmelz2.png') center/cover no-repeat;
+      z-index: -2;
+    }
+
 
 
 
@@ -202,14 +210,13 @@
  
     }
     .contact {
-      background-image: url('./assets/img/Fatmelz2.png'); /* your image path */
+      background-image: url('./assets/img/Fatmelz2.png'); 
 
       background-attachment: fixed;
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
 
-      /* -webkit-box-reflect:(right); */
  
     }
     .aboutme {
@@ -233,13 +240,18 @@
       background: url('./assets/img/Fatmelz.png') center/cover no-repeat;
       z-index: -1;
     }
-    .contact::before {
+
+
+
+
+
+    /* .contact::before {
       content: '';
       position: fixed;
       inset: 0;
       background: url('./assets/img/Fatmelz2.png') center/cover no-repeat;
       z-index: -2;
-    }
+    } */
     
 
 
