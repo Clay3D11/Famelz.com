@@ -1,276 +1,237 @@
-/* MusicMediaPlayer */
-/* MusicMediaPlayer */
-/* MusicMediaPlayer */
-/* MusicMediaPlayer */
+let now_playing = document.querySelector('.now-playing');
+let track_art = document.querySelector('.track-art');
+let track_name = document.querySelector('.track-name');
+let track_artist = document.querySelector('.track-artist');
 
-/* body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(to right,#9a1d86, #1595be);
-    font-weight: bold;
-    } */
+let playpause_btn = document.querySelector('.playpause-track');
+let next_btn = document.querySelector('.next-track');
+let prev_btn = document.querySelector('.prev-track');
 
-    .player {
-      /* height: 75vh; */
-      height: 65vh;
+let seek_slider = document.querySelector('.seek_slider');
+let volume_slider = document.querySelector('.volume_slider');
+let curr_time = document.querySelector('.current-time');
+let total_duration = document.querySelector('.total-duration');
+let wave = document.getElementById('wave');
+let randomIcon = document.querySelector('.fa-random');
+let curr_track = document.createElement('audio');
+
+let track_index = 0;
+let isPlaying = false;
+let isRandom = false;
+let updateTimer;
+
+const music_list = [
+  
+    {
+        img : 'assets/img/UnFlowZaza.gif',
+        name : 'Fa Melz',
+        artist : 'Tengo Un Flow',
+        music : 'assets/music/UnFlowZaza.mp3'
+    },
 
 
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      /* justify-content: center; */
-    }
-    
-    .wrapper {
-      /* border: 1px solid transparent; */
-      /* padding: 30px; */
-      border-radius: 20px;
-      /* background-color: #000000; */
-      /* background-color: #cf1a1a; */
-      /* background-color: #cf1a1a; */
+    {
+        img : 'assets/img/Quefue.gif',
+        name : 'Fa Melz',
+        artist : 'Que Fue',
+        music : 'assets/music/QueFue.mp3'
+    },
+
+    {
+        img : 'assets/img/goldo.gif',
+        name : 'Fa Melz',
+        artist : 'Ese Tatoo',
+        music : 'assets/music/EseTatoo.mp3'
+    },
+
+    {
+        img : 'assets/img/Nory&Famelz-Wow.gif',
+        name : 'Fa Melz Ft Nory',
+        artist : 'WOW',
+        music : 'assets/music/Nory&Famels-Wow.mp3'
+    },
 
 
-      /* background-image: url(../assets/img/eyelooping.gif); */
 
-      background-position: center;
-      background-repeat: no-repeat;
-      /* background-size: contain; */
-      /* background-size: cover; */
-    
-      /* box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-        rgba(0, 0, 0, 0.22) 0px 15px 12px; */
-    }
 
-    /* .wrapper{
-      border-radius: 50%;
-      -webkit-border-radius: 50%;
-      -moz-border-radius: 50%;
-      -ms-border-radius: 50%;
-      -o-border-radius: 50%;
 
-      height: 350px;
-    } */
+
+
+];
+
+
+
+loadTrack(track_index);
+
+function loadTrack(track_index){
+    clearInterval(updateTimer);
+    reset();
+
+    curr_track.src = music_list[track_index].music;
+    curr_track.load();
+
+    track_art.style.backgroundImage = "url(" + music_list[track_index].img + ")";
+    track_name.textContent = music_list[track_index].name;
+    track_artist.textContent = music_list[track_index].artist;
+    now_playing.textContent = "Playing music " + (track_index + 1) + " of " + music_list.length;
+
+    updateTimer = setInterval(setUpdate, 1000);
+
+    curr_track.addEventListener('ended', nextTrack);
+
+
+
+    // random_bg_color();
+
+    updateBackgroundImage();
+
+
 
     
-    .details {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      justify-content: center;
-    }
-    
-    .track-art {
-      /* margin: 25px; */
-      height: 250px;
-      width: 250px;
-      border: 2px solid #ffffff;
-      background-size: cover;
-      background-position: center;
-      border-radius: 50%;
-      -moz-box-shadow: 0px 6px 5px black;
-      -webkit-box-shadow: 0px 6px 5px black;
-      box-shadow: 0px 6px 5px black;
-      -moz-border-radius: 190px;
-      -webkit-border-radius: 190px;
-      border-radius: 190px;
-    }
-    
-    .now-playing {
-      font-size: 1rem;
-      color: transparent;
-    }
-    
-    .track-name {
-      font-size: 2.5rem;
-      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-      color: rgb(255, 0, 0);
-    
-      background-position: center;
-    
-      background-image: url(./img/);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      background-size: cover;
-    
-      color: white;
-      text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000f3;
-    }
-    
-    .track-artist {
-      /* margin-top: 5px; */
-      /* font-size: 1.5rem;
-      color: rgb(255, 0, 0);
-    
-      background-image: url(./); */
-    
-      font-size: 2rem;
-      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-      /* color: rgb(255, 0, 0); */
-    
-      background-position: center;
-    
-      /* background-image: url(/LimitlessMusicStructurepg/assets/img/eyelooping.gif); */
-      background-clip: text;
-      -webkit-background-clip: text;
-      /* color: transparent; */
-      color: white;
+}
 
-      background-size: cover;
-      text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000;
-    }
+
+
+
+
+// function random_bg_color(){
+//     let hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e'];
+//     let a;
+
+//     function populate(a){
+//         for(let i=0; i<6; i++){
+//             let x = Math.round(Math.random() * 14);
+//             let y = hex[x];
+//             a += y;
+//         }
+//         return a;
+//     }
+//     let Color1 = populate('#');
+//     let Color2 = populate('#');
+//     var angle = 'to right';
+
+//     let gradient = 'linear-gradient(' + angle + ',' + Color1 + ', ' + Color2 + ")";
+
+
     
-    .buttons {
-      color: rgb(255, 255, 255);
-      text-shadow: 0 0 20px #ff0606, 0 0 40px #ff0000;
+
+//     document.body.style.background = gradient;
     
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      /* margin-bottom: 30px; */
+//     document.querySelector('.wrapper').style.background = gradient;
+// }
+
+
+
+
+
+function updateBackgroundImage() {
+    const wrapper = document.querySelector('.wrapper');
+    const backgroundImage = `url(${music_list[track_index].img})`;
+
+    // Use a blurred and darkened version of the image as the background
+    wrapper.style.background = `
+        linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.6)),
+        ${backgroundImage}`;
+    wrapper.style.backgroundSize = 'cover';
+    wrapper.style.backgroundPosition = 'center';
+    wrapper.style.backgroundRepeat = 'no-repeat';
+}
+
+
+
+
+
+
+
+
+
+
+function reset(){
+    curr_time.textContent = "00:00";
+    total_duration.textContent = "00:00";
+    seek_slider.value = 0;
+}
+function randomTrack(){
+    isRandom ? pauseRandom() : playRandom();
+}
+function playRandom(){
+    isRandom = true;
+    randomIcon.classList.add('randomActive');
+}
+function pauseRandom(){
+    isRandom = false;
+    randomIcon.classList.remove('randomActive');
+}
+function repeatTrack(){
+    let current_index = track_index;
+    loadTrack(current_index);
+    playTrack();
+}
+function playpauseTrack(){
+    isPlaying ? pauseTrack() : playTrack();
+}
+function playTrack(){
+    curr_track.play();
+    isPlaying = true;
+    track_art.classList.add('rotate');
+    wave.classList.add('loader');
+    playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
+}
+function pauseTrack(){
+    curr_track.pause();
+    isPlaying = false;
+    track_art.classList.remove('rotate');
+    wave.classList.remove('loader');
+    playpause_btn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';
+}
+function nextTrack(){
+    if(track_index < music_list.length - 1 && isRandom === false){
+        track_index += 1;
+    }else if(track_index < music_list.length - 1 && isRandom === true){
+        let random_index = Number.parseInt(Math.random() * music_list.length);
+        track_index = random_index;
+    }else{
+        track_index = 0;
     }
-    .active {
-      color: black;
+    loadTrack(track_index);
+    playTrack();
+}
+function prevTrack(){
+    if(track_index > 0){
+        track_index -= 1;
+    }else{
+        track_index = music_list.length -1;
     }
-    
-    .repeat-track,
-    .random-track,
-    .playpause-track,
-    .prev-track,
-    .next-track {
-      padding: 25px;
-      opacity: 0.8;
-      transition: opacity 0.2s;
+    loadTrack(track_index);
+    playTrack();
+}
+function seekTo(){
+    let seekto = curr_track.duration * (seek_slider.value / 100);
+    curr_track.currentTime = seekto;
+}
+function setVolume(){
+    curr_track.volume = volume_slider.value / 100;
+}
+function setUpdate(){
+    let seekPosition = 0;
+    if(!isNaN(curr_track.duration)){
+        seekPosition = curr_track.currentTime * (100 / curr_track.duration);
+        seek_slider.value = seekPosition;
+
+        let currentMinutes = Math.floor(curr_track.currentTime / 60);
+        let currentSeconds = Math.floor(curr_track.currentTime - currentMinutes * 60);
+        let durationMinutes = Math.floor(curr_track.duration / 60);
+        let durationSeconds = Math.floor(curr_track.duration - durationMinutes * 60);
+
+        if(currentSeconds < 10) {currentSeconds = "0" + currentSeconds; }
+        if(durationSeconds < 10) { durationSeconds = "0" + durationSeconds; }
+        if(currentMinutes < 10) {currentMinutes = "0" + currentMinutes; }
+        if(durationMinutes < 10) { durationMinutes = "0" + durationMinutes; }
+
+        curr_time.textContent = currentMinutes + ":" + currentSeconds;
+        total_duration.textContent = durationMinutes + ":" + durationSeconds;
     }
-    
-    .repeat-track:hover,
-    .random-track:hover,
-    .playpause-track:hover,
-    .prev-track:hover,
-    .next-track:hover {
-      opacity: 1;
-    }
-    
-    .slider_container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .seek_slider,
-    .volume_slider {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      height: 5px;
-      background: #6f6f70;
-      /* background: transparent; */
-    
-      -webkit-transition: 0.2s;
-      transition: opacity 0.2s;
-    }
-    
-    .seek_slider::-webkit-slider-thumb,
-    .volume_slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      width: 15px;
-      height: 15px;
-      background: white;
-      border: 3px solid #ff0000;
-      cursor: grab;
-      border-radius: 100%;
-    }
-    
-    .seek_slider:hover,
-    .volume_slider:hover {
-      opacity: 1;
-    }
-    
-    .seek_slider {
-      width: 60%;
-    }
-    
-    .volume_slider {
-      width: 30%;
-      color: tr;
-    }
-    
-    .current-time,
-    .total-duration {
-      padding: 10px;
-    }
-    
-    i.fa-volume-down,
-    i.fa-volume-up {
-      padding: 10px;
-    }
-    
-    i,
-    i.fa-play-circle,
-    i.fa-pause-circle,
-    i.fa-step-forward,
-    i.fa-step-backward,
-    p {
-      cursor: pointer;
-    }
-    .randomActive {
-      color: black;
-    }
-    .rotate {
-      animation: rotation 8s infinite linear;
-    }
-    @keyframes rotation {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(359deg);
-      }
-    }
-    .loader {
-      height: 70px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .loader .stroke {
-      background: #f1f1f1;
-      height: 150%;
-      width: 10px;
-      border-radius: 50px;
-      margin: 0 5px;
-      animation: animate 1.4s linear infinite;
-    }
-    @keyframes animate {
-      50% {
-        height: 20%;
-        background: #4286f4;
-      }
-    
-      100% {
-        background: #4286f4;
-        height: 100%;
-      }
-    }
-    .stroke:nth-child(1) {
-      animation-delay: 0s;
-    }
-    .stroke:nth-child(2) {
-      animation-delay: 0.3s;
-    }
-    .stroke:nth-child(3) {
-      animation-delay: 0.6s;
-    }
-    .stroke:nth-child(4) {
-      animation-delay: 0.9s;
-    }
-    .stroke:nth-child(5) {
-      animation-delay: 0.6s;
-    }
-    .stroke:nth-child(6) {
-      animation-delay: 0.3s;
-    }
-    .stroke:nth-child(7) {
-      animation-delay: 0s;
-    }
+}
+
+
+
