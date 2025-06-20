@@ -59,7 +59,7 @@
     }
     
     .track-art {
-      margin: 25px;
+      /* margin: 25px; */
       height: 250px;
       width: 250px;
       border: 2px solid #ffffff;
@@ -97,13 +97,13 @@
     }
     
     .track-artist {
-      margin-top: 5px;
+      /* margin-top: 5px; */
       /* font-size: 1.5rem;
       color: rgb(255, 0, 0);
     
       background-image: url(./); */
     
-      font-size: 2.5rem;
+      font-size: 2rem;
       font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
       /* color: rgb(255, 0, 0); */
     
@@ -126,7 +126,7 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      margin-bottom: 30px;
+      /* margin-bottom: 30px; */
     }
     .active {
       color: black;
