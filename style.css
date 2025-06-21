@@ -261,8 +261,8 @@
 
   .contact,
   .aboutme {
-    background-attachment: scroll;
-    background-size: contain;
+    /* background-attachment: scroll; */
+    background-size: cover;
     background-position: center;
   }
 }
